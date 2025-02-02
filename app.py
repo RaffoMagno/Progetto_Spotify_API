@@ -37,8 +37,10 @@ def home():
 
     sp = spotipy.Spotify(auth=token_info['access_token'])
     user_info = sp.current_user()
-    print(user_info)
-    return render_template('home.html', user_info=user_info)
+    user_playlist = sp.current_user_playlists()
+    print(f' User info: {user_info}')
+    print(f' User playlist: {user_playlist}')
+    return render_template('home.html', user_info=user_info, user_playlist=user_playlist)
 
 if __name__ == '__main__':
     app.run(debug=True)
