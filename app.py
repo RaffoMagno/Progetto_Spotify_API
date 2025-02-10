@@ -34,6 +34,9 @@ def callback():
     session['token_info'] = token_info
     return redirect(url_for('home'))
 
+@app.route('/visualizza_brani')
+def visualizza_brani():
+    print("Bruh")
 
 @app.route('/home')
 def home():
