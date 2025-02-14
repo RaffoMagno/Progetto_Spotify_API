@@ -34,9 +34,18 @@ def callback():
     session['token_info'] = token_info
     return redirect(url_for('home'))
 
-@app.route('/visualizza_brani')
-def visualizza_brani():
-    print("Bruh")
+@app.route('/visualizza_brani/<playlist_id>')
+def visualizza_brani(playlist_id):
+    token_info = session.get('token_info', None)
+    if not token_info:
+        return redirect(url_for('login'))
+
+    sp = spotipy.Spotify(auth=token_info['access_token'])
+    tracks_data = sp.playlist_tracks(playlist_id)  # Ottieni i brani della playlist
+    tracks = tracks_data['items']
+
+    return render_template('brani.html', tracks=tracks)
+
 
 @app.route('/home')
 def home():
