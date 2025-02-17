@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, session, redirect, url_for
 import spotipy
+from services.spotify_oauth import get_spotify_object
 
 home_bp = Blueprint('home', __name__)
 
