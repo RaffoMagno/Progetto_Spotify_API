@@ -34,13 +34,14 @@
                 <a class="nav-link" href="javascript:void(0)">Link</a>
               </li>
             </ul>
-            <form class="d-flex">
+            
+            <form class="d-flex" action="{{ url_for('search.search') }}" method="get" >
               <input class="form-control me-2" type="text" placeholder="Scrivi qui...">
               <button class="btn btn-dark" type="button">Cerca</button>
             </form>
           </div>
         </div>
       </nav>
-
+      
 </body>
 </html>
